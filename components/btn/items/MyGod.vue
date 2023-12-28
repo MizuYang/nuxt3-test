@@ -1,12 +1,9 @@
 <script setup>
+
 </script>
 
 <template>
-  <HomeHeader />
-  <h1>首頁</h1>
-  <HomeMain />
-  <HomeFooter />
-  <Btn />
+myGod
 </template>
 
 <style lang='scss' scope></style>
