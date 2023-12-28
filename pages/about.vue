@@ -3,6 +3,8 @@
 <template>
   <div>
     About 頁面
+
+    <UserComponent />
   </div>
 </template>
 
