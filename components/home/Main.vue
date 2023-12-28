@@ -1,11 +1,9 @@
 <script setup>
+
 </script>
 
 <template>
-  <HomeHeader />
-  <h1>首頁</h1>
-  <HomeMain />
-  <HomeFooter />
+  <h2>主要區塊</h2>
 </template>
 
 <style lang='scss' scope></style>
