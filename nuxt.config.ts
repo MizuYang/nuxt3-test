@@ -13,5 +13,6 @@ export default defineNuxtConfig({
   // 新增其他想 Auto Import 的資料夾
   "imports": {
     "dirs": ['stores'] // 資料夾名稱
-  }
+  },
+  "modules": ['@pinia/nuxt']
 })
