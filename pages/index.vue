@@ -56,6 +56,15 @@ const { $hello } = useNuxtApp()
     plugin directive 練習 <br />
     <span v-timeformat="new Date()"></span>
   </div>
+
+
+  <!-- plugin use (vcalendar 套件) -->
+  <div style="font-size:20px;margin:20px 0;">
+    plugin use (vcalendar 套件)
+    <div>
+      <VDatePicker mode="time" />
+    </div>
+  </div>
 </template>
 
 <style lang='scss' scope></style>
