@@ -5,6 +5,9 @@ const { count, addCount} = useAddCount()
 // stores
 const productStore = useProductStore()
 
+// plugins
+const { $hello } = useNuxtApp()
+
 </script>
 
 <template>
@@ -42,6 +45,11 @@ const productStore = useProductStore()
     </button>
   </div>
 
+<!-- plugin provide -->
+  <div style="font-size:20px;margin:20px 0;">
+    plugin provide 練習 <br />
+    {{ $hello('Mizu') }}
+  </div>
 </template>
 
 <style lang='scss' scope></style>
