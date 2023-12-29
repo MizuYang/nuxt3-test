@@ -45,10 +45,16 @@ const { $hello } = useNuxtApp()
     </button>
   </div>
 
-<!-- plugin provide -->
+  <!-- plugin provide -->
   <div style="font-size:20px;margin:20px 0;">
     plugin provide 練習 <br />
     {{ $hello('Mizu') }}
+  </div>
+
+  <!-- plugin directive -->
+  <div style="font-size:20px;margin:20px 0;">
+    plugin directive 練習 <br />
+    <span v-timeformat="new Date()"></span>
   </div>
 </template>
 
