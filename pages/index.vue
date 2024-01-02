@@ -8,6 +8,13 @@ const productStore = useProductStore()
 // plugins
 const { $hello } = useNuxtApp()
 
+
+definePageMeta({
+ middleware: (to, from) => {
+   console.log("index 頁面=>", { to, from });
+ },
+});
+
 </script>
 
 <template>
@@ -71,6 +78,12 @@ const { $hello } = useNuxtApp()
     {{ '<ClientOnly> 練習 (只有在本地端才運行 plugin 註冊的方法)' }} <br /> 
     {{ $testClientOnly() }}
   </ClientOnly>
+</div>
+
+<!-- middleware 練習 -->
+<div style="font-size:20px;margin:20px 0;">
+  middleware 匿名形式 <br />
+  <Middleware-匿名 />
 </div>
   
 </template>

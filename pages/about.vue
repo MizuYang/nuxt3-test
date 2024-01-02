@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup>
+definePageMeta({
+ middleware: (to, from) => {
+   console.log("aboute 頁面=>", { to, from });
+ },
+});
+</script>
 
 <template>
   <div>
@@ -6,6 +12,8 @@
 
     <UserComponent />
   </div>
+
+  <NuxtLink to="/" style="font-size:25px;">回到首頁</NuxtLink>
 </template>
 
 <style scoped></style>
