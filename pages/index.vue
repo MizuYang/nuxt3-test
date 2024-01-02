@@ -10,9 +10,12 @@ const { $hello } = useNuxtApp()
 
 
 definePageMeta({
- middleware: (to, from) => {
-   console.log("index 頁面=>", { to, from });
- },
+  // 1.: middleware - 匿名使用方法
+  //  middleware: (to, from) => {
+  //    console.log("index 頁面=>", { to, from });
+  //  },
+  // 2.: middleware - 具名使用方法
+  middleware: ['auth'] // 加入 middleware/ 的檔名
 });
 
 </script>
