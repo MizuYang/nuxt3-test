@@ -12,7 +12,7 @@ const { $hello } = useNuxtApp()
 definePageMeta({
   // 1.: middleware - 匿名使用方法
   //  middleware: (to, from) => {
-  //    console.log("index 頁面=>", { to, from });
+  //    console.log("匿名 middleware index 頁面 =>", { to, from });
   //  },
   // 2.: middleware - 具名使用方法
   middleware: ['auth'] // 加入 middleware/ 的檔名
@@ -85,8 +85,8 @@ definePageMeta({
 
 <!-- middleware 練習 -->
 <div style="font-size:20px;margin:20px 0;">
-  middleware 匿名形式 <br />
-  <Middleware-匿名 />
+  middleware <br />
+  <NuxtLink to="/about">移動到about頁面</NuxtLink>
 </div>
   
 </template>

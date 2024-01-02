@@ -1,7 +1,7 @@
 <script setup>
 definePageMeta({
  middleware: (to, from) => {
-   console.log("aboute 頁面=>", { to, from });
+   console.log("匿名 middleware about 頁面 =>", { to, from });
  },
 });
 </script>
