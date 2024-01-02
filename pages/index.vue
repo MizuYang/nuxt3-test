@@ -57,7 +57,6 @@ const { $hello } = useNuxtApp()
     <span v-timeformat="new Date()"></span>
   </div>
 
-
   <!-- plugin use (vcalendar 套件) -->
   <div style="font-size:20px;margin:20px 0;">
     plugin use (vcalendar 套件)
@@ -65,6 +64,15 @@ const { $hello } = useNuxtApp()
       <VDatePicker mode="time" />
     </div>
   </div>
+
+  <!-- <ClientOnly> (只有在本地端才運行 plugin 註冊的方法) -->
+<div style="font-size:20px;margin:20px 0;">
+  <ClientOnly>
+    {{ '<ClientOnly> 練習 (只有在本地端才運行 plugin 註冊的方法)' }} <br /> 
+    {{ $testClientOnly() }}
+  </ClientOnly>
+</div>
+  
 </template>
 
 <style lang='scss' scope></style>
