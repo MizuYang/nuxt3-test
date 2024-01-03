@@ -6,17 +6,31 @@ definePageMeta({
 });
 
 // 單一設定 meta tag
-useHead({
-  // useHead 的所有屬性,可參考：https://nuxt.com/docs/api/composables/use-head#usehead
-  title: "這是關於 Mizu 的頁面",
-  meta: [
-    { property: "og:title", content: "這是關於 Mizu 的頁面" },
-    { property: "og:url", content: "http://localhost:3000/about" },
-    { property: "og:image", content: "http://localhost:3000/share.jpg" },
-    { name: "description", content: "關於 Mizu 頁面" },
-    { property: "og:description", content: "關於 Mizu 頁面" },
-  ],
+// useSeoMeta (新方法)
+useSeoMeta({
+ title: "這是關於 Mizu 的頁面 XD",
+ description: "關於我們 - 米知練習中",
+ ogDescription: "關於我們 - 米知練習中",
+ ogTitle: "這是關於 Mizu 的頁面 XD",
+//  ogImage: "",
+//  twitterCard: "summary_large_image",
+//  twitterSite: "",
+//  twitterCreator: "",
 });
+
+
+// useHead (舊方法)
+// useHead({
+//   // useHead 的所有屬性,可參考：https://nuxt.com/docs/api/composables/use-head#usehead
+//   title: "這是關於 Mizu 的頁面",
+//   meta: [
+//     { property: "og:title", content: "這是關於 Mizu 的頁面" },
+//     { property: "og:url", content: "http://localhost:3000/about" },
+//     { property: "og:image", content: "http://localhost:3000/share.jpg" },
+//     { name: "description", content: "關於 Mizu 頁面" },
+//     { property: "og:description", content: "關於 Mizu 頁面" },
+//   ],
+// });
 </script>
 
 <template>
