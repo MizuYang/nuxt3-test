@@ -18,6 +18,11 @@ definePageMeta({
   middleware: ['auth'] // 加入 middleware/ 的檔名
 });
 
+
+async function fetchData () {
+  const res = await fetch('/api/hello')
+  console.log(await res.json())
+}
 </script>
 
 <template>
@@ -83,10 +88,16 @@ definePageMeta({
   </ClientOnly>
 </div>
 
-<!-- middleware 練習 -->
+<!-- middleware 練習(捕捉路由變化) -->
 <div style="font-size:20px;margin:20px 0;">
-  middleware <br />
+  middleware (捕捉路由變化) <br />
   <NuxtLink to="/about">移動到about頁面</NuxtLink>
+</div>
+
+<!-- server/middleware 練習(捕捉 http Request 請求) -->
+<div style="font-size:20px;margin:20px 0;">
+  middleware (捕捉 http Request) <br />
+  <button type='button' @click='fetchData'>get api</button>
 </div>
   
 </template>
