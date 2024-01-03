@@ -18,6 +18,16 @@ useSeoMeta({
 //  twitterCreator: "",
 });
 
+// useServerSeoMeta (與 useSeoMeta 不同的是，useServerSeoMeta 是在伺服器端設定 meta tag, 本地端並不會改變)
+// const res = await useFetch("https://vue-lessons-api.vercel.app/seo/about")
+// useServerSeoMeta({
+//   title: () => `${res.data.value.title} - Nuxt3`,
+//   ogTitle: () => `${res.data.value.title} - Nuxt3`,
+//   description: () => `${res.data.value.description} - Nuxt3`,
+//   ogDescription: () => `${res.data.value.description} - Nuxt3`,
+// });
+
+
 
 // useHead (舊方法)
 // useHead({
