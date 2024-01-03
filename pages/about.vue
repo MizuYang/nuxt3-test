@@ -12,16 +12,17 @@ useHead({
     {
       rel: "stylesheet",
       href: "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
+      tagPosition: 'bodyOpen'
     },
   ],
   script: [
     {
       src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
       async: true,
+      tagPosition: 'bodyClose'
     },
   ],
 });
-
 
 // 單一設定 meta tag - useSeoMeta (新方法)
 useSeoMeta({
