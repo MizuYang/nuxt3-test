@@ -13,7 +13,20 @@ export default defineNuxtConfig({
         { "property": "og:title", "content": "Nuxt3 練習 desu~" },
         { "property": "og:url", "content": "http://localhost:3000/" },
         { "property": "og:description", "content": "這是 Mizu 的 Nuxt3 練習網頁" },
-      ]
+      ],
+      // 全域載入外部資源
+      // link: [
+      //   {
+      //     rel: "stylesheet",
+      //     href: "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
+      //   },
+      // ],
+      // script: [
+      //   {
+      //     src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
+      //     async: true,
+      //   },
+      // ],
     }
   },
 
