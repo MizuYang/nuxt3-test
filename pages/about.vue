@@ -5,8 +5,25 @@ definePageMeta({
   },
 });
 
-// 單一設定 meta tag
-// useSeoMeta (新方法)
+// 載入外部的CSS跟JS (CDN)
+// 進入 about 頁面後, 可到 network 選擇 "All" 查看會載入 animate.css, jquery
+useHead({
+  link: [
+    {
+      rel: "stylesheet",
+      href: "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
+    },
+  ],
+  script: [
+    {
+      src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
+      async: true,
+    },
+  ],
+});
+
+
+// 單一設定 meta tag - useSeoMeta (新方法)
 useSeoMeta({
  title: "這是關於 Mizu 的頁面 XD",
  description: "關於我們 - 米知練習中",
@@ -18,7 +35,7 @@ useSeoMeta({
 //  twitterCreator: "",
 });
 
-// useServerSeoMeta (與 useSeoMeta 不同的是，useServerSeoMeta 是在伺服器端設定 meta tag, 本地端並不會改變)
+// 單一設定 meta tag - useServerSeoMeta (與 useSeoMeta 不同的是，useServerSeoMeta 是在伺服器端設定 meta tag, 本地端並不會改變)
 // const res = await useFetch("https://vue-lessons-api.vercel.app/seo/about")
 // useServerSeoMeta({
 //   title: () => `${res.data.value.title} - Nuxt3`,
@@ -27,9 +44,7 @@ useSeoMeta({
 //   ogDescription: () => `${res.data.value.description} - Nuxt3`,
 // });
 
-
-
-// useHead (舊方法)
+// 單一設定 meta tag - useHead (舊方法)
 // useHead({
 //   // useHead 的所有屬性,可參考：https://nuxt.com/docs/api/composables/use-head#usehead
 //   title: "這是關於 Mizu 的頁面",
