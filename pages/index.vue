@@ -9,6 +9,9 @@ const productStore = useProductStore()
 // plugins
 const { $hello } = useNuxtApp()
 
+// 測試 useFetch
+const { data } = await useFetch('https://randomuser.me/api/')
+
 
 definePageMeta({
   // 1.: middleware - 匿名使用方法
@@ -100,6 +103,9 @@ async function fetchData () {
   middleware (捕捉 http Request) <br />
   <button type='button' @click='fetchData'>get api</button>
 </div>
+
+<!-- useFetch 練習 -->
+{{ data }}
   
 </template>
 
