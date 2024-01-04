@@ -19,7 +19,37 @@ const { data } = await useFetch('https://randomuser.me/api/', {
   // headers: {},      // Request headers
   // baseURL: "/",     // 基本的 API URL 路徑
   // timeout: 0        // 自動中止請求的毫秒數
+
+  // useFetch  攔截器 interceptors
+  // onRequest({ request, options }) {
+  //   // 設置 request headers
+  //   options.headers = options.headers || {};
+  //   options.headers.authorization = `Bearer 1234567890`;
+
+  //   console.log('request: ', request)
+  //   console.log('options: ', options)
+  // },
+  // onRequestError({ request, options, error }) {
+  //   // 處理 request 錯誤
+  //   console.log('request: ', request)
+  //   console.log('options: ', options)
+  //   console.log('error: ', error)
+  // },
+  // onResponse({ request, response, options }) {
+  //   console.log('request: ', request)
+  //   console.log('response: ', response)
+  //   console.log('options: ', options)
+  //   // 處理回傳資料
+  //   // return response._data;
+  // },
+  // onResponseError({ request, response, options }) {
+  //   // 處理 response 錯誤
+  //   console.log('request: ', request)
+  //   console.log('response: ', response)
+  //   console.log('options: ', options)
+  // },
 })
+
 
 
 definePageMeta({
