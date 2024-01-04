@@ -10,7 +10,7 @@ const productStore = useProductStore()
 const { $hello } = useNuxtApp()
 
 // 測試 useFetch
-const { data } = await useFetch('https://randomuser.me/api/', {
+// const { data } = await useFetch('https://randomuser.me/api/', {
   // 官方: https://nuxt.com/docs/api/composables/use-fetch#params
   // method: "GET",    // HTTP 請求的方法，GET(default)、POST 、 DELETE、PUT。
   // query: {},        // 將參數透過？的方式帶到 URL 上
@@ -48,7 +48,13 @@ const { data } = await useFetch('https://randomuser.me/api/', {
   //   console.log('response: ', response)
   //   console.log('options: ', options)
   // },
-})
+// })
+
+// 測試 useAsyncData
+const { data } = await useAsyncData("mizu唯一值-1", () =>
+  $fetch("https://randomuser.me/api/")
+);
+
 
 
 
@@ -66,6 +72,7 @@ async function fetchData () {
   const res = await fetch('/api/hello')
   console.log(await res.json())
 }
+
 </script>
 
 <template>
