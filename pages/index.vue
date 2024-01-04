@@ -10,7 +10,16 @@ const productStore = useProductStore()
 const { $hello } = useNuxtApp()
 
 // 測試 useFetch
-const { data } = await useFetch('https://randomuser.me/api/')
+const { data } = await useFetch('https://randomuser.me/api/', {
+  // 官方: https://nuxt.com/docs/api/composables/use-fetch#params
+  // method: "GET",    // HTTP 請求的方法，GET(default)、POST 、 DELETE、PUT。
+  // query: {},        // 將參數透過？的方式帶到 URL 上
+  // params: {},       // 將參數帶到 URL 上
+  // body: {},         // Request body
+  // headers: {},      // Request headers
+  // baseURL: "/",     // 基本的 API URL 路徑
+  // timeout: 0        // 自動中止請求的毫秒數
+})
 
 
 definePageMeta({
