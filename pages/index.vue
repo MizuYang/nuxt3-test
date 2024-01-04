@@ -1,6 +1,7 @@
 <script setup>
 // composables
 const { count, addCount} = useAddCount()
+useFetchTest()
 
 // stores
 const productStore = useProductStore()
