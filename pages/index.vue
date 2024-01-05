@@ -50,13 +50,18 @@ const { $hello } = useNuxtApp()
   // },
 // })
 
-//! useAsyncData: server端打 API ； client端 不打 API
+//! 1. useFetch: server端打 API ； client端 不打 API
+const data = await useFetch("https://randomuser.me/api/")
+
+//! 2. useAsyncData: server端打 API ； client端 不打 API
 // const { data } = await useAsyncData("mizu唯一值-1", () =>
 //   $fetch("https://randomuser.me/api/")
 // );
 
-//! $fetch: server端、client端 都會打 API
-const data = await $fetch("https://randomuser.me/api/")
+//! 3. $fetch: server端、client端 都會打 API
+// const data = await $fetch("https://randomuser.me/api/")
+
+
 
 
 
