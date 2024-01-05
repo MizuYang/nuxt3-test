@@ -61,10 +61,14 @@ const { $hello } = useNuxtApp()
 //! 3. $fetch: server端、client端 都會打 API
 // const data = await $fetch("https://randomuser.me/api/")
 
-// 重新取得 API 資料
-const { data, refresh } = await useAsyncData("mizu唯一值-1", () =>
+// refresh: 重新取得 API 資料
+const { data, refresh } = await useAsyncData("key1", () =>
   $fetch("https://randomuser.me/api/")
 );
+// refreshNuxtData: 重新取得 API 資料
+function onRefreshNuxtData () {
+  refreshNuxtData("key1")
+}
 
 
 
@@ -165,6 +169,9 @@ async function fetchData () {
     fetch 練習 <br />
     <button type='button' @click='refresh'>
       refresh重抓API資料
+    </button>
+    <button type='button' @click='onRefreshNuxtData'>
+      refreshNuxtData重抓API資料
     </button>
     <small>{{ data }}</small>
   </div>
