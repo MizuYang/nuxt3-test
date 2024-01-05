@@ -1,4 +1,6 @@
 <script setup>
+import axios from 'axios'
+
 // composables
 const { count, addCount} = useAddCount()
 useFetchTest()
@@ -78,12 +80,23 @@ async function callMoreApi () {
   // const { data: reposData } = await useFetch('https://api.github.com/orgs/nuxt/repos')
 
   //! (O) 會在 Promise.all 一起執行，等資料都跑完再一起回傳
-  const [{ data: orgsData }, { data: reposData }] = await Promise.all([
-      useFetch(`https://api.github.com/orgs/nuxt`),
-    useFetch(`https://api.github.com/orgs/nuxt/repos`),
-  ])
-  console.log('orgsData: ', orgsData.value)
-  console.log('reposData: ', reposData.value)
+  // const [{ data: orgsData }, { data: reposData }] = await Promise.all([
+  //     useFetch(`https://api.github.com/orgs/nuxt`),
+  //   useFetch(`https://api.github.com/orgs/nuxt/repos`),
+  // ])
+  // console.log('orgsData: ', orgsData.value)
+  // console.log('reposData: ', reposData.value)
+}
+
+// 使用 axios + useAsyncData call api
+useAxiosWithUseAsyncDataCallApi()
+async function useAxiosWithUseAsyncDataCallApi () {
+  const { data: res } = await useAsyncData('axiosTest', async () => {
+    const resUserData = await axios.get('https://randomuser.me/api/')
+    // 這邊必須回傳 res.data 才不會出錯
+    return resUserData.data
+  })
+  console.log('res', res.value)
 }
 
 
