@@ -70,6 +70,21 @@ function onRefreshNuxtData () {
   refreshNuxtData("key1")
 }
 
+// 同時呼叫多個 API ，更換 data 名稱
+callMoreApi()
+async function callMoreApi () {
+  //! (X) 會一個一個執行，造成阻塞
+  // const { data: orgsData } = await useFetch('https://api.github.com/orgs/nuxt')
+  // const { data: reposData } = await useFetch('https://api.github.com/orgs/nuxt/repos')
+
+  //! (O) 會在 Promise.all 一起執行，等資料都跑完再一起回傳
+  const [{ data: orgsData }, { data: reposData }] = await Promise.all([
+      useFetch(`https://api.github.com/orgs/nuxt`),
+    useFetch(`https://api.github.com/orgs/nuxt/repos`),
+  ])
+  console.log('orgsData: ', orgsData.value)
+  console.log('reposData: ', reposData.value)
+}
 
 
 definePageMeta({
