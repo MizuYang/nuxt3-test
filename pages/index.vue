@@ -50,11 +50,13 @@ const { $hello } = useNuxtApp()
   // },
 // })
 
-// 測試 useAsyncData
-const { data } = await useAsyncData("mizu唯一值-1", () =>
-  $fetch("https://randomuser.me/api/")
-);
+//! useAsyncData: server端打 API ； client端 不打 API
+// const { data } = await useAsyncData("mizu唯一值-1", () =>
+//   $fetch("https://randomuser.me/api/")
+// );
 
+//! $fetch: server端、client端 都會打 API
+const data = await $fetch("https://randomuser.me/api/")
 
 
 
@@ -131,27 +133,29 @@ async function fetchData () {
   </div>
 
   <!-- <ClientOnly> (只有在本地端才運行 plugin 註冊的方法) -->
-<div style="font-size:20px;margin:20px 0;">
-  <ClientOnly>
-    {{ '<ClientOnly> 練習 (只有在本地端才運行 plugin 註冊的方法)' }} <br /> 
-    {{ $testClientOnly() }}
-  </ClientOnly>
-</div>
+  <div style="font-size:20px;margin:20px 0;">
+    <ClientOnly>
+      {{ '<ClientOnly> 練習 (只有在本地端才運行 plugin 註冊的方法)' }} <br /> 
+      {{ $testClientOnly() }}
+    </ClientOnly>
+  </div>
 
-<!-- middleware 練習(捕捉路由變化) -->
-<div style="font-size:20px;margin:20px 0;">
-  middleware (捕捉路由變化) <br />
-  <NuxtLink to="/about">移動到about頁面</NuxtLink>
-</div>
+  <!-- middleware 練習(捕捉路由變化) -->
+  <div style="font-size:20px;margin:20px 0;">
+    middleware (捕捉路由變化) <br />
+    <NuxtLink to="/about">移動到about頁面</NuxtLink>
+  </div>
 
-<!-- server/middleware 練習(捕捉 http Request 請求) -->
-<div style="font-size:20px;margin:20px 0;">
-  middleware (捕捉 http Request) <br />
-  <button type='button' @click='fetchData'>get api</button>
-</div>
+  <!-- server/middleware 練習(捕捉 http Request 請求) -->
+  <div style="font-size:20px;margin:20px 0;">
+    middleware (捕捉 http Request) <br />
+    <button type='button' @click='fetchData'>get api</button>
+  </div>
 
-<!-- useFetch 練習 -->
-{{ data }}
+  <!-- useFetch 練習 -->
+  <div style="margin:20px 0;">
+    {{ data }}
+  </div>
   
 </template>
 
