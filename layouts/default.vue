@@ -15,7 +15,11 @@ const pages = {
   parent: {
     path: 'parent',
     name: 'parent (嵌套 router 練習)'
-  }
+  },
+  products: {
+    path: 'products',
+    name: 'products (嵌套 router 練習)'
+  },
 }
 </script>
 
