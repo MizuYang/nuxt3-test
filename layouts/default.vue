@@ -12,6 +12,10 @@ const pages = {
     path: 'user',
     name: 'user'
   },
+  parent: {
+    path: 'parent',
+    name: 'parent (嵌套 router 練習)'
+  }
 }
 </script>
 
