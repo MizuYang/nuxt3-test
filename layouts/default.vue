@@ -23,6 +23,13 @@ const pages = {
         <li v-for="page in pages" :key="page.name">
           <NuxtLink :to="page.path">{{ page.name }}</NuxtLink>
         </li>
+        <li>
+          <NuxtLink to='https://google.com.tw'
+                    target="_blank"
+                    external>
+            前往 Google
+          </NuxtLink>
+        </li>
       </ul>
     </header>
     <slot />
