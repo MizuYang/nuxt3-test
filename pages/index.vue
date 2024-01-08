@@ -115,6 +115,12 @@ async function fetchData () {
   console.log(await res.json())
 }
 
+
+// useRoute, useRouter 練習
+const route = useRoute()
+console.log('route:', route)
+const router = useRouter()
+console.log('router:', router)
 </script>
 
 <template>
