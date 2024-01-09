@@ -46,6 +46,14 @@ const pages = {
     </header>
     <slot />
     <footer>footer 區塊</footer>
+
+    <!-- loading 元件 -->
+    <NuxtLoadingIndicator color="#f00" 
+                          :height="10" 
+                          :throttle="0">
+      <p style="text-align:center;">Loading...</p>
+    </NuxtLoadingIndicator>
+
   </div>
 </template>
 
