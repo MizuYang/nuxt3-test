@@ -19,11 +19,26 @@ async function getCourse() {
 </script>
 
 <template>
-  {{ courses }}
-
-  <!-- 用三個切換課程的 tab 並在進入該課程後用該課程的 id 去 call 取得課程資料 API
-  用三個切換課程的 tab 並在進入該課程後用該課程的 id 去 call 取得課程資料 API
-  用三個切換課程的 tab 並在進入該課程後用該課程的 id 去 call 取得課程資料 API -->
+  <div class="d-flex">
+    <div class="border cursor-pointer" 
+         v-for="course in courses" :key="course.id">
+      <Course :course="course" />
+    </div>
+  </div>
 </template>
 
-<style lang='scss' scope></style>
+<style lang='scss' scope>
+.d-flex {
+  display: flex;
+}
+.border {
+  border: 1px solid black;
+}
+.cursor-pointer {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #bebaba;
+  }
+}
+</style>
