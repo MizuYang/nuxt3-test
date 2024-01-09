@@ -16,8 +16,6 @@ const products = ref({
 </script>
 
 <template>
-  <NuxtPage />
-
   <nav>
     <ul>
       <template v-for="(value,key) in products" :key="value.name">
