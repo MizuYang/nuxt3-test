@@ -1,12 +1,7 @@
 <script setup>
 const courses = ref([])
 
-
-onMounted(async () => {
-  nextTick(async () => {
-    await getCourse()
-  })
-})
+await getCourse()
 
 async function getCourse() {
   const api = 'https://vue-lessons-api.vercel.app/courses/list'
@@ -20,7 +15,7 @@ async function getCourse() {
 
 <template>
   <div class="d-flex">
-    <div class="border cursor-pointer" 
+    <div class="border cursor-pointer mx-3" 
          v-for="course in courses" :key="course.id">
       <Course :course="course" />
     </div>
@@ -40,5 +35,9 @@ async function getCourse() {
   &:hover {
     background-color: #bebaba;
   }
+}
+.mx-3 {
+  margin-left: 9px;
+  margin-right: 9px;
 }
 </style>
