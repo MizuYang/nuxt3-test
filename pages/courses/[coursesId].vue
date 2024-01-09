@@ -1,8 +1,16 @@
 <script setup>
 const route = useRoute()
-console.log(route)
 const { coursesId } = route.params
+const data = ref({})
 
+await getCourse()
+
+async function getCourse() {
+  const api = `https://vue-lessons-api.vercel.app/courses/${coursesId}`
+  data.value = await useAsyncData('test-course-2', async () => {
+    return await $fetch(api)
+  })
+}
 </script>
 
 <template>
@@ -12,6 +20,8 @@ const { coursesId } = route.params
   </NuxtLink>
 
   {{ coursesId }}
+
+  {{ data }}
 </template>
 
 <style lang='scss' scope></style>
