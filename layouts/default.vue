@@ -20,6 +20,10 @@ const pages = {
     path: 'products',
     name: 'products (嵌套 router 練習)'
   },
+  courses: {
+    path: 'courses',
+    name: 'courses (接課程API練習嵌套路由)'
+  },
 }
 </script>
 
