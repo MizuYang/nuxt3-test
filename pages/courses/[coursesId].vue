@@ -19,9 +19,11 @@ async function getCourse() {
     返回
   </NuxtLink>
 
-  {{ coursesId }}
+  <ClientOnly>
+    <CourseSingleCourse :data="data.data.data[0]" />
+  </ClientOnly>
 
-  {{ data }}
+  <pre>{{ data.data.data }}</pre>
 </template>
 
 <style lang='scss' scope></style>
