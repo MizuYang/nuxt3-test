@@ -5,23 +5,23 @@ const pages = {
     name: '首頁'
   },
   about: {
-    path: 'about',
+    path: '/about',
     name: 'about'
   },
   user: {
-    path: 'user',
+    path: '/user',
     name: 'user'
   },
   parent: {
-    path: 'parent',
+    path: '/parent',
     name: 'parent (嵌套 router 練習)'
   },
   products: {
-    path: 'products',
+    path: '/products',
     name: 'products (嵌套 router 練習)'
   },
   courses: {
-    path: 'courses',
+    path: '/courses',
     name: 'courses (接課程API練習嵌套路由)'
   },
 }
