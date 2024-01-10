@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const useVoteStore = defineStore('voteStore', () => {
   // data
   const data = ref({})
+  const isVoteing = ref(false)
 
   getData()
 
@@ -14,20 +15,29 @@ export const useVoteStore = defineStore('voteStore', () => {
   }
   // 投票
   async function vote(name) {
-    console.log('投票', name)
-    const res = await useAsyncData('vote', () => {
-      return $fetch('https://vue-lessons-api.vercel.app/vote/add', {
-        method: 'POST',
-        body: {
-          type: name
-        },
+    if (isVoteing.value) return
+    isVoteing.value = true
+    try {
+      const res = await useAsyncData('vote', () => {
+        return $fetch('https://vue-lessons-api.vercel.app/vote/add', {
+          method: 'POST',
+          body: {
+            type: name
+          },
+        })
       })
-    })
+      console.log(res)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      isVoteing.value = false
+    }
     data.value[name].count++
   }
 
   return {
     data,
-    vote
+    vote,
+    isVoteing
   }
 })

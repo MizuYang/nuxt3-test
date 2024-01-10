@@ -16,7 +16,11 @@ const store = useVoteStore()
           {{ item.name }}
           一票
         </button>
-        實得票數：{{ item.count }}
+        
+        <template v-if='store.isVoteing'>
+          投票中...
+        </template>
+        <template v-else>實得票數：{{ item.count }}</template>
       </li>
     </template>
   </ul>
