@@ -1,7 +1,7 @@
 <script setup>
 // store
 const store = useVoteStore()
-const { data } = store
+const { data, vote } = store
 
 </script>
 
@@ -10,7 +10,9 @@ const { data } = store
     <ul>
       <template v-for="item in data" :key="item.name">
         <li>
-          <button type="button" style="font-size:25px;">
+          <button type="button" 
+                  @click="vote(item.name)"
+                  style="font-size:25px;">
             投
             <img :src="item.path" alt="框架圖片" width="50" style="display:inline-block;">
             {{ item.name }}
