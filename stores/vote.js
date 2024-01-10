@@ -10,8 +10,6 @@ export const useVoteStore = defineStore('voteStore', () => {
     const res = await useAsyncData('getVote', () => {
       return $fetch('https://vue-lessons-api.vercel.app/vote/list')
     })
-
-    console.log(res.data.value)
     data.value = res.data.value
   }
   // 投票
@@ -25,7 +23,6 @@ export const useVoteStore = defineStore('voteStore', () => {
         },
       })
     })
-    console.log(res.data.value)
     data.value[name].count++
   }
 

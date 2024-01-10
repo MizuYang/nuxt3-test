@@ -43,5 +43,13 @@ export default defineNuxtConfig({
   "imports": {
     "dirs": ['stores'] // 資料夾名稱
   },
-  "modules": ['@pinia/nuxt']
+  // "modules": ['@pinia/nuxt']
+  "modules": [
+    [
+        '@pinia/nuxt',
+        {
+            'autoImports': ['defineStore', 'acceptHMRUpdate'],
+        },
+    ]
+],
 })
