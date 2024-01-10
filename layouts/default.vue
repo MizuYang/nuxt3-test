@@ -24,6 +24,10 @@ const pages = {
     path: '/courses',
     name: 'courses (接課程API練習嵌套路由)'
   },
+  vote: {
+    path: '/vote',
+    name: 'vote (pinia練習投票功能)'
+  },
 }
 
 //! loading 方法二: 自訂 loading 元件
