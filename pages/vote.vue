@@ -9,12 +9,12 @@ const { data, vote } = store
   <ClientOnly>
     <ul>
       <template v-for="item in data" :key="item.name">
-        <li>
-          <button type="button" 
+        <li class="d-flex align-items-center">
+          <button type="button" class="d-flex align-items-center me-3"
                   @click="vote(item.name)"
                   style="font-size:25px;">
             投
-            <img :src="item.path" alt="框架圖片" width="50" style="display:inline-block;">
+            <img :src="item.path" :alt="item.name" width="50" style="display:inline-block;">
             {{ item.name }}
             一票
           </button>
@@ -25,4 +25,14 @@ const { data, vote } = store
   </ClientOnly>
 </template>
 
-<style lang='scss' scope></style>
+<style lang='scss' scope>
+.d-flex {
+  display: flex;
+}
+.align-items-center {
+  align-items: center;
+}
+.me-3 {
+  margin-right: 9px;
+}
+</style>
