@@ -120,7 +120,7 @@ async function fetchData () {
 const route = useRoute()
 const router = useRouter()
 
-
+// 1. 使用 .env 來設定環境變數
 testRuntimeConfig()
 async function testRuntimeConfig() {
   const config = useRuntimeConfig()
@@ -134,6 +134,12 @@ async function testRuntimeConfig() {
     // 直接顯示在瀏覽器的 console
     console.log("client token:", config.public.apiUrl);
   }
+}
+// 2. 使用 vite 的方式處理環境變數
+testUseViteProcessEnv()
+function testUseViteProcessEnv() {
+  console.log('process.env.MY_NAME: ', process.env.MY_NAME)
+  console.log('process.env.AGE: ', process.env.AGE)
 }
 </script>
 
