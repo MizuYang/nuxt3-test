@@ -96,7 +96,7 @@ async function useAxiosWithUseAsyncDataCallApi () {
     // 這邊必須回傳 res.data 才不會出錯
     return resUserData.data
   })
-  console.log('res', res.value)
+  // console.log('res', res.value)
 }
 
 
@@ -112,15 +112,29 @@ definePageMeta({
 
 async function fetchData () {
   const res = await fetch('/api/hello')
-  console.log(await res.json())
+  // console.log(await res.json())
 }
 
 
 // useRoute, useRouter 練習
 const route = useRoute()
-console.log('route:', route)
 const router = useRouter()
-console.log('router:', router)
+
+
+testRuntimeConfig()
+async function testRuntimeConfig() {
+  const config = useRuntimeConfig()
+  console.log(config)
+  
+  if (process.server) {
+    // server 的訊息會顯示在終端機
+    // console.log("server token:", config.token);
+  }
+  if (process.client) {
+    // 直接顯示在瀏覽器的 console
+    console.log("client token:", config.public.apiUrl);
+  }
+}
 </script>
 
 <template>
