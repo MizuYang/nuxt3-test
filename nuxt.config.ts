@@ -71,6 +71,13 @@ export default defineNuxtConfig({
       "process.env": process.env,
     },
   },
+  // 
+  devServer: {
+    https: {
+      key: './https/localhost+3-key.pem',
+      cert: './https/localhost+3.pem'
+    }
+  }
 })
 
 
