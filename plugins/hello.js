@@ -1,5 +1,5 @@
 export default defineNuxtPlugin((nuxtApp) => {
-  console.log('nuxtApp', nuxtApp)
+  // console.log('nuxtApp', nuxtApp)
   
   return {
     // 建立要注入的方法

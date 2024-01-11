@@ -5,7 +5,7 @@ export const useFetchTest = () => {
 
   async function getFetchData () {
     const res = await $fetch('/api/hello')
-    console.log('$fetch: ', res)
+    // console.log('$fetch: ', res)
   }
 
   return {
