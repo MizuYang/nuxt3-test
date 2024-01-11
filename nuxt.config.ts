@@ -52,4 +52,16 @@ export default defineNuxtConfig({
         },
     ]
   ],
+  // 環境變數設定
+  "runtimeConfig": {
+    // 只能在 server 端讀取到的環境變數
+    // 可以放置敏感資料, 例: token
+    "token": '1234567890',
+    
+    // 只能在 client 端讀取到的環境變數
+    // 可放 apiUrl
+    "public": {
+      "apiUrl": 'https://www.mike.com',
+    }
+  }
 })
