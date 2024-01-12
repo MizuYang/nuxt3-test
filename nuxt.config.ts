@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+
+const config = {
   devtools: { enabled: true },
 
   // [全域] 優化 SEO (meta tag)
@@ -43,15 +44,15 @@ export default defineNuxtConfig({
   "imports": {
     "dirs": ['stores'] // 資料夾名稱
   },
-  // "modules": ['@pinia/nuxt']
-  "modules": [
-    [
-        '@pinia/nuxt',
-        {
-            'autoImports': ['defineStore', 'acceptHMRUpdate'],
-        },
-    ]
-  ],
+  "modules": ['@pinia/nuxt'],
+  // "modules": [
+  //   [
+  //       '@pinia/nuxt',
+  //       {
+  //           'autoImports': ['defineStore', 'acceptHMRUpdate'],
+  //       },
+  //   ]
+  // ],
   // 1. 使用 .env 來設定環境變數
   // "runtimeConfig": {
   //   // 只能在 server 端讀取到的環境變數
@@ -72,31 +73,9 @@ export default defineNuxtConfig({
     },
     // 用 Nuxt 代理 API 的 Domain, 處理 CORS 問題
     "server": {
-      "proxy": {
-        // 設定 domain 底下的路徑, 
-        // 打 API 時會自動找到該路徑的 API, 並將 domain 換成 target
-        '/VsWeb/api': {
-          // 網站的 domain
-          "target": 'https://www.vscinemas.com.tw/',
-          "changeOrigin": true,
-        },
-
-        // 可以同時設定多組不同的 domain 代理
-        '/A/api': {
-          "target": 'https://www.A.com.tw/',
-          "changeOrigin": true,
-        },
-        '/B/api': {
-          "target": 'https://www.B.com.tw/',
-          "changeOrigin": true,
-        },
-        '/C/api': {
-          "target": 'https://www.C.com.tw/',
-          "changeOrigin": true,
-        },
-      },
+      "proxy": {},
     }
-  },
+  }
   // 使用 https
   // devServer: {
   //   https: {
@@ -104,6 +83,35 @@ export default defineNuxtConfig({
   //     cert: './https/localhost+3.pem'
   //   }
   // }
-})
+}
+
+// 判斷如果是開發階段, 才把代理的設定寫進去
+if(process.env.NODE_ENV === 'development') {
+  config.vite.server.proxy = {
+    // 設定 domain 底下的路徑, 
+    // 打 API 時會自動找到該路徑的 API, 並將 domain 換成 target
+    '/VsWeb/api': {
+      // 網站的 domain
+      "target": 'https://www.vscinemas.com.tw/',
+      "changeOrigin": true,
+    },
+
+    // 可以同時設定多組不同的 domain 代理
+    '/A/api': {
+      "target": 'https://www.A.com.tw/',
+      "changeOrigin": true,
+    },
+    '/B/api': {
+      "target": 'https://www.B.com.tw/',
+      "changeOrigin": true,
+    },
+    '/C/api': {
+      "target": 'https://www.C.com.tw/',
+      "changeOrigin": true,
+    },
+  }
+ }
+
+export default defineNuxtConfig(config)
 
 
