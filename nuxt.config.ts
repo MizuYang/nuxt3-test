@@ -80,6 +80,20 @@ export default defineNuxtConfig({
           "target": 'https://www.vscinemas.com.tw/',
           "changeOrigin": true,
         },
+
+        // 可以同時設定多組不同的 domain 代理
+        '/A/api': {
+          "target": 'https://www.A.com.tw/',
+          "changeOrigin": true,
+        },
+        '/B/api': {
+          "target": 'https://www.B.com.tw/',
+          "changeOrigin": true,
+        },
+        '/C/api': {
+          "target": 'https://www.C.com.tw/',
+          "changeOrigin": true,
+        },
       },
     }
   },
