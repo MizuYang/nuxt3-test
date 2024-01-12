@@ -141,6 +141,17 @@ function testUseViteProcessEnv() {
   console.log('process.env.MY_NAME: ', process.env.MY_NAME)
   console.log('process.env.AGE: ', process.env.AGE)
 }
+
+// CORS 練習, 使用 Nuxt 的 proxy 功能, 代理其他網站 domain
+testProxyCors()
+async function testProxyCors() {
+  // "https://www.vscinemas.com.tw/VsWeb/api/GetLstDicCinema"
+  const response = await $fetch(
+    // 京站威秀 API
+    "/VsWeb/api/GetLstDicCinema"
+  );
+  console.log('京站威秀 API (CORS處理練習)', response);
+}
 </script>
 
 <template>
