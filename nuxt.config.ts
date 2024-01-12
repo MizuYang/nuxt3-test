@@ -70,6 +70,18 @@ export default defineNuxtConfig({
     "define": {
       "process.env": process.env,
     },
+    // 用 Nuxt 代理 API 的 Domain, 處理 CORS 問題
+    "server": {
+      "proxy": {
+        // 設定 domain 底下的路徑, 
+        // 打 API 時會自動找到該路徑的 API, 並將 domain 換成 target
+        '/VsWeb/api': {
+          // 網站的 domain
+          "target": 'https://www.vscinemas.com.tw/',
+          "changeOrigin": true,
+        },
+      },
+    }
   },
   // 使用 https
   // devServer: {
