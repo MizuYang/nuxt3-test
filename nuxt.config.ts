@@ -75,7 +75,10 @@ const config = {
     "server": {
       "proxy": {},
     }
-  }
+  },
+  "nitro": {
+    "plugins": ["~/server/db/index.js"],
+  },
   // 使用 https
   // devServer: {
   //   https: {
