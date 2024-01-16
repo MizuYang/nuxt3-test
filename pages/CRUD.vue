@@ -25,6 +25,19 @@ function formInit() {
     age: ""
   }
 }
+
+// put api
+onMounted(() => {
+  addIsEditToAllObjects()
+})
+function addIsEditToAllObjects() {
+  peopleData.value.map(people => {
+    return {
+      ...people,
+      isEdit: false
+    }
+  })
+}
 </script>
 
 <template>
@@ -55,8 +68,8 @@ function formInit() {
       <li style="margin:10px;display:flex;">
         <div style="margin-right:20px;">
           <!-- CRUD: post -->
-          <button type='button'>
-            編輯
+          <button type='button' @click="people.isEdit=!people.isEdit">
+            {{ people.isEdit?'儲存':'編輯' }}
           </button>
           <!-- CRUD: delete -->
           <button type='button'>
@@ -64,8 +77,13 @@ function formInit() {
           </button>
         </div>
         <div>
-          <template v-if="true">
+          <template v-if="!people.isEdit">
+            <!-- 未編輯時, 直接顯示名字 -->
             {{ people.name }}
+          </template>
+          <template v-else>
+            <!-- 編輯欄位 -->
+            <input type="text" v-model="people.name">
           </template>
           <p>
             年齡:{{ people.age }}
