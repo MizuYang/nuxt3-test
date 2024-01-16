@@ -1,6 +1,6 @@
 <script setup>
 // get api
-const { data: peopleData } = await useFetch("/api/people");
+const { data: peopleData, refresh } = await useFetch("/api/people");
 
 // post api
 const form = ref({
@@ -14,6 +14,16 @@ async function addPeople() {
     body: form.value
   })
   console.log('post api: ', res)
+  // 更新畫面, 初始化表單
+  refresh()
+  formInit()
+}
+function formInit() {
+  form.value = {
+    name: "",
+    email: "",
+    age: ""
+  }
 }
 </script>
 
