@@ -8,8 +8,12 @@ const form = ref({
   email: "",
   age: "",
 })
-function addPeople() {
-
+async function addPeople() {
+  const res = await $fetch('/api/people/create', {
+    method: 'POST',
+    body: form.value
+  })
+  console.log('post api: ', res)
 }
 </script>
 
