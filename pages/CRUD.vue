@@ -50,10 +50,28 @@ function formInit() {
   </form>
 
   <!-- CRUD: get -->
-  <ul>
+  <ul style="width:400px;">
     <template v-for="people in peopleData" :key="people._id">
-      <li>
-        {{ people.name }} ({{ people.age }}): {{ people.email }}
+      <li style="margin:10px;display:flex;">
+        <div style="margin-right:20px;">
+          <!-- CRUD: post -->
+          <button type='button'>
+            編輯
+          </button>
+          <!-- CRUD: delete -->
+          <button type='button'>
+            刪除
+          </button>
+        </div>
+        <div>
+          <template v-if="true">
+            {{ people.name }}
+          </template>
+          <p>
+            年齡:{{ people.age }}
+            信箱:{{ people.email }}
+          </p>
+        </div>
       </li>
     </template>
   </ul>
