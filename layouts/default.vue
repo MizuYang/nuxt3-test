@@ -28,6 +28,10 @@ const pages = {
     path: '/vote',
     name: 'vote (pinia練習投票功能)'
   },
+  crud: {
+    path: '/crud',
+    name: 'CRUD (透過 Mongoose 連接 MongoDB 操控 API)'
+  },
 }
 
 //! loading 方法二: 自訂 loading 元件
