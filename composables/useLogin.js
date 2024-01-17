@@ -43,11 +43,17 @@ export function useLogin() {
     } catch (err) {
       console.error(err)
       // 登入驗證失敗: 可將用戶返回登入頁面
+      cookie.value = null
     }
+  }
+  function userLogout() {
+    cookie.value = null
+    userInfo.value = {}
   }
 
   return {
     userLogin,
+    userLogout,
     userInfo
   }
 }
