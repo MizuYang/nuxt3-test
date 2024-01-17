@@ -1,6 +1,22 @@
 <script setup>
 // data
 const dialogComponent = ref(null)
+const dialogConfig = {
+    title: '我是標題',
+    content: '我是內文',
+    confirm: {
+      btnName: '確定',
+      onComplate() {
+        console.log('您點擊了確定!')
+      }
+    },
+    cancel: {
+      btnName: '取消',
+      onComplate() {
+        console.log('您點擊了取消!')
+      }
+    }
+  }
 
 // composable
 const { openDialog } = useDialog()
@@ -10,7 +26,7 @@ onMounted(() => {
 })
 
 function openModal() {
-  openDialog()
+  openDialog(dialogConfig)
 }
 </script>
 

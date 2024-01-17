@@ -1,5 +1,5 @@
 <script setup>
-const { dialogRef, closeDialog } = useDialog()
+const { dialogData, dialogRef, openDialog, closeDialog } = useDialog()
 
 defineExpose({
   dialogRef
@@ -8,18 +8,18 @@ defineExpose({
 
 <template>
   <dialog id="dialog" ref="dialogRef" style="font-size:30px;">
-    <header>標題</header>
-    <main style="min-height:220px;">內容</main>
+    <header>{{ dialogData?.title }}</header>
+    <main style="min-height:220px;">{{ dialogData?.content }}</main>
     <footer style="text-align:center;">
       <button type="button" 
               @click="closeDialog"
               style="font-size:30px;">
-        取消
+        {{ dialogData?.cancel?.btnName }}
       </button>
       <button type="button" 
               @click="closeDialog"
               style="font-size:30px;">
-        確定
+        {{ dialogData?.confirm?.btnName }}
       </button>
     </footer>
   </dialog>
