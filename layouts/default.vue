@@ -32,6 +32,10 @@ const pages = {
     path: '/crud',
     name: 'CRUD (透過 Mongoose 連接 MongoDB 操控 API)'
   },
+  dialog: {
+    path: '/dialog',
+    name: 'dialog Modal (提示窗練習)'
+  },
 }
 
 //! loading 方法二: 自訂 loading 元件
