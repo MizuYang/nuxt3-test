@@ -11,13 +11,15 @@ defineExpose({
     <header>{{ dialogData?.title }}</header>
     <main style="min-height:220px;">{{ dialogData?.content }}</main>
     <footer style="text-align:center;">
+      <!-- 取消按鈕 -->
       <button type="button" 
-              @click="closeDialog"
+              @click="closeDialog('cancel')"
               style="font-size:30px;">
         {{ dialogData?.cancel?.btnName }}
       </button>
+      <!-- 確定按鈕 -->
       <button type="button" 
-              @click="closeDialog"
+              @click="closeDialog('confirm')"
               style="font-size:30px;">
         {{ dialogData?.confirm?.btnName }}
       </button>

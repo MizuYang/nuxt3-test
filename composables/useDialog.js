@@ -1,6 +1,6 @@
-const dialogRef = ref(null)
 // data
 const dialogData = ref({})
+const dialogRef = ref(null)
 
 export const useDialog = () => {
 
@@ -9,13 +9,14 @@ export const useDialog = () => {
       if (dialogRef.value) {
         dialogRef.value.showModal()
         dialogData.value = data
-        console.log(dialogData)
+        console.log(dialogData.value)
       }
     })
   }
-  function closeDialog() {
+  function closeDialog(type) {
     nextTick(() => {
       if (dialogRef.value) dialogRef.value.close()
+      if(dialogData.value[type].onComplate) dialogData.value[type].onComplate()
     })
   }
 
