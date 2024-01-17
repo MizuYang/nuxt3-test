@@ -11,6 +11,10 @@ export function useLogin() {
       }
     })
     console.log(res)
+    // 將 toekn 存到 cookie
+    const cookie = useCookie('nuxt-mizu-login-token')
+    cookie.value = res.data.token // 設定值
+    console.log(cookie.value) // 讀取值
   }
 
   return {
