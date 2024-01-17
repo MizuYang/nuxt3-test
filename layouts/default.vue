@@ -36,6 +36,10 @@ const pages = {
     path: '/dialog',
     name: 'dialog Modal (提示窗練習)'
   },
+  login: {
+    path: '/login',
+    name: 'login (登陸機制開發)'
+  },
 }
 
 //! loading 方法二: 自訂 loading 元件
