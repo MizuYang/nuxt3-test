@@ -38,6 +38,20 @@ function addIsEditToAllObjects() {
     }
   })
 }
+function editToggle(people) {
+  people.isEdit = !people.isEdit
+}
+async function saveData(people) {
+  people.isEdit = false
+  console.log('people: ', people)
+  const res = await $fetch('/api/people/update', {
+    method: 'PUT',
+    body: {
+      ...people
+    }
+  })
+  console.log(res)
+}
 </script>
 
 <template>
@@ -68,7 +82,8 @@ function addIsEditToAllObjects() {
       <li style="margin:10px;display:flex;">
         <div style="margin-right:20px;">
           <!-- CRUD: post -->
-          <button type='button' @click="people.isEdit=!people.isEdit">
+          <button type='button' 
+                  @click="people.isEdit?saveData(people):editToggle(people)">
             {{ people.isEdit?'儲存':'編輯' }}
           </button>
           <!-- CRUD: delete -->
