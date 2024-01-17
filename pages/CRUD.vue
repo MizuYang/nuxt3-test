@@ -52,6 +52,19 @@ async function saveData(people) {
   })
   console.log(res)
 }
+
+// deltete api
+async function deleteUserInfo(_id) {
+  const res = await $fetch('/api/people/remove', {
+    method: 'DELETE',
+    body: {
+      _id
+    }
+  })
+  console.log(res)
+  // 更新畫面
+  await refresh()
+}
 </script>
 
 <template>
@@ -87,7 +100,7 @@ async function saveData(people) {
             {{ people.isEdit?'儲存':'編輯' }}
           </button>
           <!-- CRUD: delete -->
-          <button type='button'>
+          <button type='button' @click="deleteUserInfo(people._id)">
             刪除
           </button>
         </div>
