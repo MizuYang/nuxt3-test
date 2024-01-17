@@ -8,6 +8,10 @@ const { openDialog } = useDialog()
 onMounted(() => {
   console.log(dialogComponent.value.dialogRef)
 })
+
+function openModal() {
+  openDialog()
+}
 </script>
 
 <template>
@@ -15,7 +19,7 @@ onMounted(() => {
 
   <div style="margin:20px;">
     <button type="button" 
-            @click="openDialog"  
+            @click="openModal"  
             style="font-size:30px;">
       顯示 Dialog
     </button>
