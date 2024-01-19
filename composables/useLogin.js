@@ -3,9 +3,21 @@ export function useLogin() {
   // data
   const userInfo = ref({})
   const cookie = useCookie('nuxt-mizu-login-token')
+  const auth1 = cookie.value // 紀錄當入登入的auth token
 
   onMounted(() => {
     checkLogin()
+
+    // 每100毫秒檢查一次登入token
+    setInterval(() => {
+      const cookie = useCookie('nuxt-mizu-login-token')
+      const auth2 = cookie.value
+
+      // token 不同就 reload
+      if(auth1 !== auth2) {
+        window.location.reload()
+      }
+    }, 100)
   })
 
   async function userLogin() {
