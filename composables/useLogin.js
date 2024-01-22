@@ -33,7 +33,9 @@ export function useLogin() {
     userInfo.value = res.data
     
     // 將 toekn 存到 cookie
-    cookie.value = res.data.token // 設定值
+    cookie.value = {
+      token: res.data.token // 設定值
+    }
     console.log(cookie.value) // 讀取值
   }
   async function checkLogin() {
