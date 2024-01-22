@@ -14,9 +14,9 @@ function editInputShow() {
   isEdit.value = true
   nextTick(() => (inputRef.value.focus()))
 }
-function save() {
+async function save() {
   isEdit.value = false
-  getUserInfo(userName)
+  userInfo.value = await getUserInfo(userName)
 }
 
 </script>
@@ -30,7 +30,12 @@ function save() {
     {{ isEdit?'儲存':'編輯' }}
   </button>
 
-  {{ userInfo }}
+  <!-- 用戶資訊 -->
+  <div>
+    <p>{{ userName }}</p>
+    <p>{{ userInfo?.location }}</p>
+    <img :src="userInfo?.avatar_url" :alt="userInfo?.name" width="100" height="100">
+  </div>
 </template>
 
 <style lang='scss' scope></style>
