@@ -40,6 +40,10 @@ const pages = {
     path: '/login',
     name: 'login (登陸機制開發)'
   },
+  githubApi: {
+    path: '/githubApi',
+    name: 'githubApi (串接 GitHub API、無限滾動練習)'
+  },
 }
 
 //! loading 方法二: 自訂 loading 元件
