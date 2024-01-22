@@ -2,20 +2,25 @@
 export function useLogin() {
   // data
   const userInfo = ref({})
-  const cookie = useCookie('nuxt-mizu-login-token')
-  const auth1 = cookie.value // 紀錄當入登入的auth token
+  const cookie = useCookie('nuxt-mizu-login-token', {
+    domain: '.nuxt3demo.com'
+  })
+  const auth1 = cookie.value?.token // 紀錄當入登入的auth token
 
   onMounted(() => {
     checkLogin()
 
     // 每100毫秒檢查一次登入token
-    setInterval(() => {
-      const cookie = useCookie('nuxt-mizu-login-token')
-      const auth2 = cookie.value
+    const timer = setInterval(() => {
+      const cookie2 = useCookie('nuxt-mizu-login-token', {
+        domain: '.nuxt3demo.com'
+      })
+      const auth2 = cookie2.value?.token
 
       // token 不同就 reload
       if(auth1 !== auth2) {
         window.location.reload()
+        clearInterval(timer)
       }
     }, 100)
   })
@@ -39,16 +44,19 @@ export function useLogin() {
     console.log(cookie.value) // 讀取值
   }
   async function checkLogin() {
-    const token = cookie
+    const cookie1 = useCookie('nuxt-mizu-login-token', {
+      domain: '.nuxt3demo.com'
+    })
+    const token = cookie1.value?.token
     
     // 有登入 token 才驗證登入狀態
-    if(!token.value) return
+    if(!token) return
     
     try {
       const res = await $fetch('https://vue-lessons-api.vercel.app/testToken', {
         method: 'POST',
         headers: {
-          Authorization: token.value
+          Authorization: token
         }
       })
       console.log(res)
