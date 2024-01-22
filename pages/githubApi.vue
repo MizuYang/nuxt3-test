@@ -1,9 +1,14 @@
 <script setup>
+import { getUserInfo, getUserRepos } from '@/api/github.js'
+
 // data
 const userName = 'MizuYang'
+const userInfo = ref({})
 const isEdit = ref(false)
 const inputRef = ref(null)
 
+userInfo.value = await getUserInfo(userName)
+getUserRepos()
 
 function editInputShow() {
   isEdit.value = true
@@ -11,6 +16,7 @@ function editInputShow() {
 }
 function save() {
   isEdit.value = false
+  getUserInfo(userName)
 }
 
 </script>
@@ -23,6 +29,8 @@ function save() {
   <button type="button" @click="isEdit?save():editInputShow()">
     {{ isEdit?'儲存':'編輯' }}
   </button>
+
+  {{ userInfo }}
 </template>
 
 <style lang='scss' scope></style>
