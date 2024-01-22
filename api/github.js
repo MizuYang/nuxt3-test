@@ -2,7 +2,6 @@
 
 // 取得 github 用戶資料
 export async function getUserInfo(name) {
-  console.log('getUserInfo')
   const { data } = await useFetch(`https://api.github.com/users/${name}`, {
     method: 'GET',
   })
@@ -11,7 +10,14 @@ export async function getUserInfo(name) {
   return data.value
 }
 // 取得 github 用戶 repo
-export function getUserRepos() {
+export async function getUserRepos(name) {
   console.log('getUserRepos')
+  const { data } = await useFetch(`https://api.github.com/users/${name}/repos`, {
+    method: 'GET'
+  })
+
+  console.log(data.value)
+
+  return data.value
 }
  
