@@ -31,7 +31,7 @@ async function loadUserRepo(name='MizuYang', pageNumber=1) {
     method: 'GET'
   })
   console.log(data.value)
-  userRepos.value = [...userRepos.value, ...data.value]
+  userRepos.value = [...userRepos.value, ...data.value] // 舊的資料 + 新的資料
   isLoadingFetching.value = false
   if(!data.value.length) isLimit.value = true // 儲存庫已經沒專案可顯示了
 }

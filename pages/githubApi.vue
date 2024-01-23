@@ -24,11 +24,10 @@ await getUserInfo(userName.value)
 await getUserRepos(userName.value)
 
 watch(isEnteredView, () => {
-  if(isLimit.value || isLoadingFetching.value) return
+  // 若未在可視畫面 || 超出限制 || 正在打api中 => 中斷程式
+  if(!isEnteredView.value || isLimit.value || isLoadingFetching.value) return
   // loading 出現在可視範圍 => 滾動條至底 => 打 api 取得資料
-  console.log(curPageNumber.value)
   curPageNumber.value++
-  console.log(curPageNumber.value)
   loadUserRepo(userName.value, curPageNumber.value)
 })
 
@@ -42,8 +41,8 @@ function editInputShow() {
 }
 async function save() {
   isEdit.value = false
-  userInfo.value = await getUserInfo(userName.value)
-  userRepos.value = await getUserRepos(userName.value)
+  await getUserInfo(userName.value)
+  await getUserRepos(userName.value)
 }
 
 </script>
