@@ -2,14 +2,14 @@
 import { getUserInfo, getUserRepos } from '@/api/github.js'
 
 // data
-const userName = 'MizuYang'
+const userName = ref('MizuYang')
 const userInfo = ref({})
 const userRepos = ref([])
 const isEdit = ref(false)
 const inputRef = ref(null)
 
-userInfo.value = await getUserInfo(userName)
-userRepos.value = await getUserRepos(userName)
+userInfo.value = await getUserInfo(userName.value)
+userRepos.value = await getUserRepos(userName.value)
 
 function editInputShow() {
   isEdit.value = true
@@ -17,7 +17,8 @@ function editInputShow() {
 }
 async function save() {
   isEdit.value = false
-  userInfo.value = await getUserInfo(userName)
+  userInfo.value = await getUserInfo(userName.value)
+  userRepos.value = await getUserRepos(userName.value)
 }
 
 </script>
@@ -25,7 +26,7 @@ async function save() {
 <template>
   <input type="text" 
          ref="inputRef" 
-         v-model="userName" 
+         v-model.trim="userName" 
          :disabled="!isEdit">
   <button type="button" @click="isEdit?save():editInputShow()">
     {{ isEdit?'儲存':'編輯' }}
