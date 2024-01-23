@@ -82,7 +82,12 @@ async function save() {
     </template>
   </ul>
 
-  <Loading ref="loadingRef" />
+  <template v-if="!isLimit">
+    <Loading ref="loadingRef" />
+  </template>
+  <template v-else>
+    <p style="text-align:center;font-size:25px;">已經到底了...</p>
+  </template>
 </template>
 
 <style lang='scss' scope></style>
