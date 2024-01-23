@@ -10,7 +10,7 @@ import {
 } from '@/api/github.js'
 
 // composables
-const { isEnteredView, intersectionObserver } = useIntersectionObserver()
+const { isEnteredView, intersectionObserver, unobserver } = useIntersectionObserver()
 
 // data
 const userName = ref('MizuYang')
@@ -34,6 +34,9 @@ watch(isEnteredView, () => {
 onMounted(() => {
   intersectionObserver(loadingRef.value.$el)
 })
+onBeforeUnmount(() => {
+  unobserver(loadingRef.value.$el)
+})
 
 function editInputShow() {
   isEdit.value = true
@@ -44,6 +47,7 @@ async function save() {
   await getUserInfo(userName.value)
   await getUserRepos(userName.value)
 }
+
 
 </script>
 

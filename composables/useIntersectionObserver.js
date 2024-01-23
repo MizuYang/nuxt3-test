@@ -17,9 +17,16 @@ export function useIntersectionObserver() {
 
     observer.value.observe(el)
   }
+  function unobserver(el) {
+    if(observer.value) {
+      observer.value.unobserve(el) 
+      console.log('卸載成功')
+    }
+  }
 
   return {
     intersectionObserver,
+    unobserver,
     isEnteredView,
     elRef
   }
