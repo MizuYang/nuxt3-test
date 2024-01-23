@@ -1,15 +1,40 @@
 <script setup>
-import { getUserInfo, getUserRepos } from '@/api/github.js'
+import { 
+  userInfo, 
+  userRepos, 
+  getUserInfo, 
+  getUserRepos,
+  loadUserRepo,
+  isLimit,
+  isLoadingFetching
+} from '@/api/github.js'
+
+// composables
+const { isEnteredView, intersectionObserver } = useIntersectionObserver()
 
 // data
 const userName = ref('MizuYang')
-const userInfo = ref({})
-const userRepos = ref([])
 const isEdit = ref(false)
 const inputRef = ref(null)
+const loadingRef = ref(null)
+const curPageNumber = ref(1)
 
-userInfo.value = await getUserInfo(userName.value)
-userRepos.value = await getUserRepos(userName.value)
+
+await getUserInfo(userName.value)
+await getUserRepos(userName.value)
+
+watch(isEnteredView, () => {
+  if(isLimit.value || isLoadingFetching.value) return
+  // loading 出現在可視範圍 => 滾動條至底 => 打 api 取得資料
+  console.log(curPageNumber.value)
+  curPageNumber.value++
+  console.log(curPageNumber.value)
+  loadUserRepo(userName.value, curPageNumber.value)
+})
+
+onMounted(() => {
+  intersectionObserver(loadingRef.value.$el)
+})
 
 function editInputShow() {
   isEdit.value = true
@@ -57,7 +82,7 @@ async function save() {
     </template>
   </ul>
 
-  <Loading />
+  <Loading ref="loadingRef" />
 </template>
 
 <style lang='scss' scope></style>
