@@ -56,6 +56,8 @@ async function save() {
       </li>
     </template>
   </ul>
+
+  <Loading />
 </template>
 
 <style lang='scss' scope></style>
